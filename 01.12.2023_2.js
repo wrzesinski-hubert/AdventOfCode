@@ -1,10 +1,12 @@
+const fs = require("fs");
+
 const input = fs.readFileSync("01.12.2023.txt").toString();
 
 const DIGIT_MATCHERS = {
   one: "1",
   two: "2",
   three: "3",
-  four: "4", 
+  four: "4",
   five: "5",
   six: "6",
   seven: "7",
@@ -36,7 +38,9 @@ const getIndexes = (string, match) => {
 
 function replaceCharacter(string, index, replacement) {
   return (
-    string.slice(0, index) + replacement + string.slice(index + replacement.length)
+    string.slice(0, index) +
+    replacement +
+    string.slice(index + replacement.length)
   );
 }
 
@@ -47,9 +51,15 @@ const sum = input
 
     NUMBERS.forEach((number) => {
       const finds = getIndexes(item, number);
-      
+
       finds.forEach(
-        (find) => transformedString = replaceCharacter(transformedString, find, DIGIT_MATCHERS[number]));
+        (find) =>
+          (transformedString = replaceCharacter(
+            transformedString,
+            find,
+            DIGIT_MATCHERS[number]
+          ))
+      );
     });
 
     transformedString = transformedString.replace(/\D+/g, "");
