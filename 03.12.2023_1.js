@@ -30,7 +30,7 @@ numbers.forEach((number) => {
   }
 
   for (let i = middleIndex; i < middleIndex + range; i++) {
-    if (input[i].match(RGX)) shouldInsert = true;
+    if (input[i] && input[i].match(RGX)) shouldInsert = true;
   }
 
   if (bottomIndex < input.length) {
